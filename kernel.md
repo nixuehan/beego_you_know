@@ -1,5 +1,6 @@
 # beego 的 http server...
-在工作中有用到golang，后来遇到了beego 重构了一下我的应用。感觉棒棒的~ 应用强壮了不少。所以我打算以最新的stable v1.5.0 来剖析下beego的源代码，因为知其然知其所以然.我们才能更好的使用beego ，同时提高我们的golang能力 。加我的群吧 一起学习 群号:511634754
+在工作中有用到golang，后来遇到了beego 重构了一下我的应用。感觉棒棒的~ 应用强壮了不少。所以我打算以最新的stable v1.5.0 来剖析下beego的源代码，因为知其然知其所以然.我们才能更好的使用beego ，同时提高我们的golang能力 。加我的群吧 一起学习 群号:511634754  
+Author 逆雪寒 2015.12.02
 
 
 ##* beego 的源代码里，为了让大家顺畅阅读更好理解。我会删掉那些本节我没分析到的代码。
@@ -79,7 +80,10 @@ func NewApp() *App {
 	cr := NewControllerRegister() //new 一个 Handlers，方便用来处理 http服务 的输入和输出
 
 	//初始化了 App结构。http.Server  这个就是golang自带的http server了~ 太好理解了。这样
-	//app.Server 就是 等于  http.Server了~ 如果我们不用 beego 的时候。 写个http server 是不是直接调用 http.Server.ListenAndServe()就很容易实现一个 类似nginx 的基础http 服务器 。 那可能有的人说  http.ListenAndServe() 这样就可以啦。嗯 不过看下源代码就知道  http.ListenAndServe 其实 也是调用更底层的  http.Server.ListenAndServe 。 beego 为了灵活性所以用更底层的 http.Server.ListenAndServe
+	//app.Server 就是 等于  http.Server了~ 如果我们不用 beego 的时候。 写个http server 
+	//是不是直接调用 http.Server.ListenAndServe()就很容易实现一个 类似nginx 的基础http 服务器 //那可能有的人说  http.ListenAndServe() 这样就可以啦。嗯 不过看下源代码就知道  
+	//http.ListenAndServe 其实 也是调用更底层的  http.Server.ListenAndServe 。 beego 
+	//为了灵活性所以用更底层的 http.Server.ListenAndServe
 
 	app := &App{Handlers: cr,Server: &http.Server{}}
 	return app
@@ -105,7 +109,9 @@ func (app *App) Run() {
 
  		// 我们这里可以只关注。两个变量  Addr 和  Handler
  		// Addr 就是我们要绑定的地址和端口
- 		// Handler 就是我们的处理器, GET  POST  PUT 等请求就是需要他接收和输出.. 这么理解吧  http.Server 这个结构就像是麦当劳.. 而 Handler 就是服务员小妹妹，她负责收钱 和给你冰淇淋
+ 		// Handler 就是我们的处理器, GET  POST  PUT 等请求就是需要他接收和输出.. 
+ 		// 这么理解吧  http.Server 这个结构就像是麦当劳.. 而 Handler 就是服务员小妹妹，
+ 		// 她负责收钱 和给你冰淇淋
 
  		//确定要绑定ip和端口
 		app.Server.Addr = addr
