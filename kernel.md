@@ -4,10 +4,8 @@
 
 ##* beego 的源代码里，为了让大家顺畅阅读更好理解。我会删掉那些本节我没分析到的代码。
 
-###这节我们先从 beego 的 http server 说起。我们会抽丝剥茧，让一个最简单的的 "beego" 跑起来。
-
-
-####最基础最核心其实就两样东西.  http.Server  和  Handler   他们的关系~就类似 麦当劳 和 麦当劳里的服务员妹子。 先有了麦当劳..然后 你给钱妹子。。妹子给你冰淇淋。。也就  请求和输出..
+####这节我们先从 beego 的 http server 说起。我们会抽丝剥茧，让一个最简单的的 "beego" 跑起来。
+最基础最核心其实就两样东西.  http.Server  和  Handler   他们的关系~就类似 麦当劳 和 麦当劳里的服务员妹子。 先有了麦当劳..然后 你给钱妹子。。妹子给你冰淇淋。。也就  请求和输出..
 
 这段是官网贴的启动beego的代码。 那我们就从 Run 这个函数开始
 
@@ -134,13 +132,17 @@ func (app *App) Run() {
 ```
 
 
-上面是创建了 http 服务容器。接下来就是 接待输入和输出的自定义方法。beego是怎么设计的呢。只有一个目的就是实现ServeHTTP 这个方法。只有实现了这个方法，那么才符合 app.Server.Handler = app.Handlers。我们看下官网手册 http 这节对于Handler的定义。其实就是一个接口。里面只有一个方法.. 你懂了吗？ interface 你可以理解为Handler发动机设计图. 无论是歼20还是歼16，只要按照图纸做出来的发动机，当然里面的细节可以根据具体的战斗机需要进行调整(实现了 ServeHTTP这个方法)..我们都可以说 这款战机的发动机是 Handler发动机 -_-! 讲了好多废话..
+上面是创建了 http 服务容器。接下来就是 接待输入和输出的自定义方法。beego是怎么设计的呢。只有一个目的就是实现ServeHTTP 这个方法。只有实现了这个方法，那么才符合 app.Server.Handler = app.Handlers。我们看下官网手册 http 这节对于Handler的定义。
 
 ```javascript
 type Handler interface {
     ServeHTTP(ResponseWriter, *Request)
 }
 ```
+
+其实就是一个接口。里面只有一个方法.. 你懂了吗？ interface 你可以理解为Handler发动机设计图. 无论是歼20还是歼16，只要按照图纸做出来的发动机，当然里面的细节可以根据具体的战斗机需要进行调整(实现了 ServeHTTP这个方法)..我们都可以说 这款战机的发动机是 Handler发动机 -_-! 讲了好多废话..
+
+
 
 ##### router.go 
 ```javascript
@@ -167,8 +169,7 @@ func (p *ControllerRegistor) ServeHTTP(rw http.ResponseWriter, r *http.Request) 
 }
 ```
 
-
-
+###  记得跑一下代码。在整体理解下哦。完整可运行代码，请看 nixuehan.go   我会一步一步带着大家实现一个 "beego 框架" 而且只要一个文件 
 
 
 
