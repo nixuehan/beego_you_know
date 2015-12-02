@@ -60,12 +60,11 @@ func NewControllerRegister() *ControllerRegistor {
 
 func (p *ControllerRegistor) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
 
-	//在这里。你可以自由的发挥了。比如  写你自己的 路由算法 等等等...
-
+	//在这里。你可以自由的发挥了。比如  写你自己的 路由算法 等等等
 	//这段是我自己加的。为了能输出清晰点。。。
 	rw.Header().Set("Content-Type", "text/plain; charset=utf-8") // normal header
-    rw.WriteHeader(http.StatusOK)
-    io.WriteString(rw,"加我的群 golang 一起学习 群号:511634754")
+	rw.WriteHeader(http.StatusOK)
+	io.WriteString(rw,"加我的群 golang 一起学习 群号:511634754")
 }
 
 
