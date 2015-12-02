@@ -87,5 +87,6 @@ func Run(params ...string) {
 }
 
 func main() {
+	//修改成你的IP和端口
     Run("192.168.202.5:9413")
 }
