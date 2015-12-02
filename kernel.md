@@ -81,7 +81,8 @@ func NewApp() *App {
 
 	//初始化了 App结构。http.Server  这个就是golang自带的http server了~ 太好理解了。这样
 	//app.Server 就是 等于  http.Server了~ 如果我们不用 beego 的时候。 写个http server 
-	//是不是直接调用 http.Server.ListenAndServe()就很容易实现一个 类似nginx 的基础http 服务器 //那可能有的人说  http.ListenAndServe() 这样就可以啦。嗯 不过看下源代码就知道  
+	//是不是直接调用 http.Server.ListenAndServe()就很容易实现一个 类似nginx 的基础http 服务器 
+	//那可能有的人说  http.ListenAndServe() 这样就可以啦。嗯 不过看下源代码就知道  
 	//http.ListenAndServe 其实 也是调用更底层的  http.Server.ListenAndServe 。 beego 
 	//为了灵活性所以用更底层的 http.Server.ListenAndServe
 
