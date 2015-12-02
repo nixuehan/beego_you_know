@@ -105,7 +105,7 @@ func (app *App) Run() {
 
  		// 我们这里可以只关注。两个变量  Addr 和  Handler
  		// Addr 就是我们要绑定的地址和端口
- 		// Handler 就是我们的处理器, GET  POST  PUT 等请求就是需要他接收和输出.. 这么理解吧  http.Server 这个结构就像是麦当劳.. 而 Handler 就是服务员小妹妹，她负责收钱 和给你冰淇淋...
+ 		// Handler 就是我们的处理器, GET  POST  PUT 等请求就是需要他接收和输出.. 这么理解吧  http.Server 这个结构就像是麦当劳.. 而 Handler 就是服务员小妹妹，她负责收钱 和给你冰淇淋
 
  		//确定要绑定ip和端口
 		app.Server.Addr = addr
